@@ -1,12 +1,13 @@
 // Variables used Globally
-var lowercase = 'abcdefghijklmnopqrstuvwxyz'
-var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var numbers = '1, 2, 3, 4, 5, 6, 7, 8, 9, 0'
-var special = '!@#$%^&*()_+{}|:"<>?-=[];,./'
+var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "L", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", "'", ")", "_", "+", "{", "}", "|", ":", "<", ">", "?", "-", "=", "[", "]", ";", ",", ".", "/"]
 
 var generateBtn = document.querySelector(".generate");
 var textpassword = document.querySelector("#password");
 
+var password;
 var passwordfinal = "";
 var createdpassword = "";
 
@@ -29,12 +30,14 @@ var startPassword = function(){
         var usespecial = window.confirm("would you like the password to contain special characters?");
         passwordGenerate();
     };
+
    
 
     function passwordGenerate(){
         if (!usespecial && !usenumbers && !useuppercase && !uselowercase){
             alert("Please confirm which character types you would like to include");
             startPassword();
+
         // just special   
         }else if (usespecial && !usenumbers && !useuppercase && !uselowercase){
             createdpassword = special;
@@ -77,23 +80,21 @@ var startPassword = function(){
         // lowercase
         }else if (!usespecial && !usenumbers && !useuppercase && uselowercase){
             createdpassword = lowercase;
-        }else{
-            alert("Uh oh, something went terribly wrong!")
         }
-        console.log(createdpassword);
+        // console.log(createdpassword);
         return createdpassword;
     }
     
-    for (var i = 0; i <= passwordLength; i++){
+    
+    for (var i = 0; i < passwordLength; i++) {
         var randomizer = Math.floor(Math.random() * createdpassword.length);
-        passwordfinal = createdpassword.charAT(randomizer);
-        console.log(passwordfinal);
+        passwordfinal += createdpassword[randomizer];
+        console.log(passwordfinal)
     }
-
+        
     textpassword.value = passwordfinal;
 
 }
-
 
 // Listener event to button
 generateBtn.addEventListener("click", startPassword);
