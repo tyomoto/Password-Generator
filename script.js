@@ -9,7 +9,7 @@ var textpassword = document.querySelector("#password");
 
 var password;
 var passwordfinal = "";
-var createdpassword = "";
+var passwordcharacters = "";
 
 var startPassword = function(){
     
@@ -40,55 +40,55 @@ var startPassword = function(){
 
         // just special   
         }else if (usespecial && !usenumbers && !useuppercase && !uselowercase){
-            createdpassword = special;
+            passwordcharacters = special;
         // special and numbers
         }else if (usespecial && usenumbers && !useuppercase && !uselowercase){
-            createdpassword = special.concat(numbers);
+            passwordcharacters = special.concat(numbers);
         // special and uppercase
         }else if (usespecial && !usenumbers && useuppercase && !uselowercase){
-            createdpassword = special.concat(uppercase);
+            passwordcharacters = special.concat(uppercase);
         // special and lowercase
         }else if (usespecial && !usenumbers && !useuppercase && uselowercase){
-            createdpassword = special.concat(lowercase);
+            passwordcharacters = special.concat(lowercase);
         // special, numbers, uppercase
         }else if (usespecial && usenumbers && useuppercase && !uselowercase){
-            createdpassword = special.concat(numbers, uppercase);
+            passwordcharacters = special.concat(numbers, uppercase);
         // special, numbers, lowercase
         }else if (usespecial && usenumbers && !useuppercase && uselowercase){
-            createdpassword = special.concat(numbers, lowercase);
+            passwordcharacters = special.concat(numbers, lowercase);
         // special, numbers, uppercase, lowercase - ALL 4 TYPES
         }else if (usespecial && usenumbers && useuppercase && uselowercase){
-            createdpassword = special.concat(numbers, uppercase, lowercase);
+            passwordcharacters = special.concat(numbers, uppercase, lowercase);
         // numbers
         }else if (!usespecial && usenumbers && !useuppercase && !uselowercase){
-            createdpassword = numbers;
+            passwordcharacters = numbers;
         // numbers and uppercase
         }else if (!usespecial && usenumbers && useuppercase && !uselowercase){
-            createdpassword = numbers.concat(uppercase);
+            passwordcharacters = numbers.concat(uppercase);
         // numbers and lowercase
         }else if (!usespecial && usenumbers && !useuppercase && uselowercase){
-            createdpassword = numbers.concat(lowercase);
+            passwordcharacters = numbers.concat(lowercase);
         // numbers, uppercase and lowercase (Letters)
         }else if (!usespecial && usenumbers && useuppercase && uselowercase){
-            createdpassword = numbers.concat(uppercase, lowercase);
+            passwordcharacters = numbers.concat(uppercase, lowercase);
         // uppercase
         }else if (!usespecial && !usenumbers && useuppercase && !uselowercase){
-            createdpassword = uppercase;
+            passwordcharacters = uppercase;
         // uppercase and lowercase (Letters)
         }else if (!usespecial && !usenumbers && useuppercase && uselowercase){
-            createdpassword = uppercase.concat(lowercase);
+            passwordcharacters = uppercase.concat(lowercase);
         // lowercase
         }else if (!usespecial && !usenumbers && !useuppercase && uselowercase){
-            createdpassword = lowercase;
+            passwordcharacters = lowercase;
         }
-        // console.log(createdpassword);
-        return createdpassword;
+        console.log(passwordcharacters);
+        return passwordcharacters;
     }
     
     
     for (var i = 0; i < passwordLength; i++) {
-        var randomizer = Math.floor(Math.random() * createdpassword.length);
-        passwordfinal += createdpassword[randomizer];
+        var randomizer = Math.floor(Math.random() * passwordcharacters.length);
+        passwordfinal += passwordcharacters[randomizer];
         console.log(passwordfinal)
     }
         
